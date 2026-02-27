@@ -93,8 +93,8 @@
                     <span class="text-[0.65rem] tracking-[0.2em] uppercase text-gray-300 font-bold">Proposta Comercial</span>
                 </div>
                 <div class="hidden md:flex items-center gap-8 text-sm font-bold tracking-wider">
-                    <a href="#comercial" class="hover:text-pink-500 transition-colors">METAS</a>
-                    <a href="#regras" class="hover:text-pink-500 transition-colors">REGRAS</a>
+                    <a href="#comercial" class="hover:text-pink-500 transition-colors text-white">METAS</a>
+                    <a href="#regras" class="hover:text-pink-500 transition-colors text-white">REGRAS</a>
                 </div>
             </div>
         </nav>
@@ -126,14 +126,14 @@
 
         <section id="comercial" class="pt-20 pb-24 relative z-10 border-t border-white/10">
             <div class="max-w-7xl mx-auto px-6">
-                <h2 class="text-3xl font-bold tracking-wider mb-2 uppercase">Metas e Comissionamento</h2>
+                <h2 class="text-3xl font-bold tracking-wider mb-2 uppercase text-white">Metas e Comissionamento</h2>
                 <div class="w-12 h-1 bg-pink-500 mb-12"></div>
                 
                 <div id="meta-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                     <!-- Gerado Dinamicamente -->
                 </div>
 
-                <div class="bg-white/5 border border-white/10 p-6 rounded-sm">
+                <div class="bg-white/5 border border-white/10 p-6 rounded-sm text-white">
                     <h4 class="text-sm uppercase tracking-widest text-gray-500 mb-6 font-bold flex items-center gap-2">
                         <i data-lucide="trending-up" class="w-4 h-4"></i> Exemplo de Apuração
                     </h4>
@@ -143,26 +143,30 @@
         </section>
 
         <section id="regras" class="pt-20 pb-24 relative z-10 border-t border-white/10">
-            <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-7xl mx-auto px-6 text-white">
                 <h2 class="text-3xl font-bold tracking-wider mb-2 uppercase text-white">Regras e Prazos</h2>
                 <div class="w-12 h-1 bg-pink-500 mb-12"></div>
 
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div id="kpi-section" class="glass-panel p-8 border-l-4 border-l-pink-500"></div>
+                <div class="grid md:grid-cols-2 gap-8 text-white">
+                    <!-- KPI Section -->
+                    <div id="kpi-section" class="glass-panel p-8 border-l-4 border-l-pink-500">
+                        <!-- Gerado via JS -->
+                    </div>
 
-                    <div class="glass-panel p-8 border-l-4 border-l-purple-500">
+                    <!-- Pagamentos Card -->
+                    <div class="glass-panel p-8 border-l-4 border-l-purple-500 text-white">
                         <div class="flex items-center gap-4 mb-6">
                             <div class="bg-purple-500/20 p-3 rounded-full"><i data-lucide="wallet" class="w-6 h-6 text-purple-500"></i></div>
                             <h3 id="payment-title" class="text-xl font-bold uppercase">Recebimento</h3>
                         </div>
                         <div id="payment-dual-path-container" class="space-y-8">
-                            <!-- Gerado Dinamicamente -->
+                            <!-- Gerado via JS -->
                         </div>
                     </div>
                 </div>
 
                 <div id="additional-clauses-container" class="mt-12 hidden">
-                    <div class="bg-white/5 p-8 border border-white/5">
+                    <div class="bg-white/5 p-8 border border-white/5 text-white">
                         <h4 class="text-xs font-black uppercase tracking-[0.3em] text-gray-500 mb-6 italic">Observações Importantes</h4>
                         <ul id="clauses-list" class="space-y-3 text-sm text-gray-400"></ul>
                     </div>
@@ -170,9 +174,9 @@
             </div>
         </section>
 
-        <footer class="py-12 bg-black border-t border-white/10 text-center">
-            <img src="https://i.ibb.co/chfw0cND/Horizontal-Com-Tag-W.png" alt="3C" class="h-10 mx-auto opacity-70 mb-4">
-            <p class="text-[10px] text-gray-500 uppercase tracking-widest">Confidencial &copy; 2026 3C Gaming BizDev</p>
+        <footer class="py-12 bg-black border-t border-white/10 text-center text-white">
+            <img src="https://i.ibb.co/chfw0cND/Horizontal-Com-Tag-W.png" alt="3C" class="h-10 mx-auto opacity-70 mb-4 text-white">
+            <p class="text-[10px] text-gray-500 uppercase tracking-widest text-white">Confidencial &copy; 2026 3C Gaming BizDev</p>
         </footer>
     </div>
 
@@ -180,7 +184,6 @@
         /* ==========================================================================
            FICHA TÉCNICA DA PROPOSTA (EDITÁVEL MANUALMENTE)
            ========================================================================== 
-           Basta alterar os valores à direita dos dois pontos (:)
         */
         const CONFIG = {
             // Identidade
@@ -189,51 +192,44 @@
             password: "3c2026",
 
             // Valores Financeiros
-            metaBase: 200000,      // Meta em Reais de depósitos
-            valorFixo: 20000,      // Valor para Molde 1, 2 ou Caminho 1
-            valorFixoPremium: 25000, // Valor aumentado (usado apenas se isDualPath for true)
-            bonusPorFaixa: 10000,  // Bônus a cada faixa atingida
-            valorFaixa: 100000,    // Valor de cada faixa extra (ex: 10k em 10k)
+            metaBase: 200000,      
+            valorFixo: 20000,      
+            valorFixoPotencializado: 25000, 
+            bonusPorFaixa: 10000,  
+            valorFaixa: 100000,
 
-            /* CONFIGURAÇÃO DE PAGAMENTO
-               isDualPath: true (Mostra 2 opções de escolha) | false (Mostra apenas 1 modo)
-            */
+            // Títulos das Opções (Sincronizados)
+            titleOptionA: "Opção A (50% Antecipado)",
+            titleOptionB: "Opção B (Pós Perfomance)",
+
+            // MODO DUAL (2 Opções)
             isDualPath: true, 
 
-            /* MODO ÚNICO (Só funciona se isDualPath for false)
-               1: 100% Antecipado 
-               2: 50% Antecipado + 50% Final 
-               3: Pós Performance (Fixo + Bônus no final)
-            */
+            // MODO ÚNICO (Se isDualPath for false) - 1: 100% Ant | 2: 50/50 | 3: Pós
             paymentMode: 2, 
             
-            // Verba de Marketing (Ativações com Viewers)
             marketing: {
-                show: true,           // true = mostra o card | false = esconde
+                show: true,           
                 label: "Ações de Marketing",
                 valor: 1000,
                 desc: "Verba destinada a ativações e sorteios com viewers."
             },
 
-            // Regra de Wager (KPI)
             kpi: {
-                title: "Qualidade (KPI)",
-                regra: "Regra 2X",
-                desc: "O volume total apostado deve ser no mínimo o dobro (2x) do valor depositado.",
-                example: "Requer-se R$ 2,00 em Wager para cada R$ 1,00 depositado."
+                title: "Controle de Qualidade (KPI)",
+                regra: "REGRA 2X:",
+                desc: "Para comprovar a veracidade e qualidade do público, a meta está atrelada ao Wager.",
+                ruleDesc: "O valor total apostado deve ser o dobro do depositado.",
+                example: "Ex: Para meta de R$ 200.000, requer R$ 400.000 em apostas reais."
             },
 
-            // Cláusulas Adicionais (Adicione entre aspas e separe por vírgula)
+            // Observações Importantes
             clauses: [
                 "Exclusividade no segmento iGaming durante o período de vigência.",
                 "Uso de imagem autorizado para mídias proprietárias da marca."
             ]
         };
 
-        /* ==========================================================================
-           LÓGICA DO MOTOR (NÃO É NECESSÁRIO EDITAR ABAIXO DESTE PONTO)
-           ========================================================================== 
-        */
         const fmt = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
 
         function init() {
@@ -245,92 +241,94 @@
             let fixoCardHTML = "";
             if(CONFIG.isDualPath) {
                 fixoCardHTML = `
-                <div class="border border-pink-500 p-8 bg-black/80 relative overflow-hidden ring-4 ring-pink-500/20 rounded">
-                    <div class="absolute top-0 right-0 bg-pink-500 text-white text-[9px] font-bold px-2 py-1 uppercase tracking-widest animate-pulse">2 Opções Disponíveis</div>
-                    <p class="text-gray-400 uppercase tracking-widest text-xs mb-4">Escolha de Fixo</p>
+                <div class="border border-pink-500 p-8 bg-black/80 relative overflow-hidden ring-4 ring-pink-500/20 rounded text-white text-center">
+                    <div class="absolute top-0 right-0 bg-pink-500 text-white text-[9px] font-bold px-2 py-1 uppercase tracking-widest animate-pulse">Escolha um Caminho</div>
+                    <p class="text-gray-400 uppercase tracking-widest text-xs mb-4">Opções de Fixo</p>
                     <div class="space-y-6">
                         <div>
-                            <p class="text-pink-500 text-[10px] font-bold uppercase mb-1">Opção A (50% Antecipado)</p>
+                            <p class="text-pink-500 text-[10px] font-bold uppercase mb-1">${CONFIG.titleOptionA}</p>
                             <h3 class="text-2xl font-black text-white">${fmt.format(CONFIG.valorFixo)}</h3>
                         </div>
                         <div class="h-px bg-white/10"></div>
                         <div>
-                            <p class="text-purple-500 text-[10px] font-bold uppercase mb-1">Opção B (Pós + Bônus)</p>
-                            <h3 class="text-3xl font-black text-white">${fmt.format(CONFIG.valorFixoPremium)}</h3>
+                            <p class="text-purple-500 text-[10px] font-bold uppercase mb-1">${CONFIG.titleOptionB}</p>
+                            <h3 class="text-3xl font-black text-white">${fmt.format(CONFIG.valorFixoPotencializado)}</h3>
                         </div>
                     </div>
                 </div>`;
             } else {
                 fixoCardHTML = `
-                <div class="border border-pink-500/50 p-8 bg-black/60 relative overflow-hidden rounded">
+                <div class="border border-pink-500/50 p-8 bg-black/60 relative overflow-hidden rounded text-center text-white">
                     <div class="absolute top-0 right-0 bg-pink-500 text-white text-[9px] font-bold px-2 py-1 uppercase tracking-widest">Valor Fixo</div>
                     <p class="text-gray-400 uppercase tracking-widest text-xs mb-2">Garantido</p>
                     <h3 class="text-4xl font-extrabold text-white mb-4">${fmt.format(CONFIG.valorFixo)}</h3>
                     <div class="h-px w-full bg-white/10 mb-4"></div>
-                    <p class="text-gray-400 text-xs leading-relaxed uppercase tracking-widest">Pago conforme cronograma abaixo.</p>
+                    <p class="text-gray-400 text-xs leading-relaxed uppercase tracking-widest">Fixo por Operação Mensal</p>
                 </div>`;
             }
 
             cardsContainer.innerHTML = `
-                <div class="border border-white/20 p-8 bg-black/60 relative overflow-hidden rounded">
-                    <div class="absolute top-0 right-0 bg-white/20 text-white text-[9px] font-bold px-2 py-1 uppercase tracking-widest">Meta Base</div>
+                <div class="border border-white/20 p-8 bg-black/60 relative overflow-hidden rounded text-center text-white">
+                    <div class="absolute top-0 right-0 bg-white/20 text-white text-[9px] font-bold px-2 py-1 uppercase tracking-widest text-white">Meta Base</div>
                     <p class="text-gray-400 uppercase tracking-widest text-xs mb-2">Volume de Depósitos</p>
                     <h3 class="text-4xl font-extrabold text-white mb-4">${fmt.format(CONFIG.metaBase)}</h3>
                     <div class="h-px w-full bg-white/10 mb-4"></div>
-                    <p class="text-gray-400 text-xs leading-relaxed uppercase tracking-widest">Gatilho inicial de performance.</p>
+                    <p class="text-gray-400 text-[10px] leading-relaxed uppercase tracking-widest text-white">Gatilho de performance.</p>
                 </div>
                 ${fixoCardHTML}
-                <div class="border border-purple-500/50 p-8 bg-black/60 relative overflow-hidden rounded">
+                <div class="border border-purple-500/50 p-8 bg-black/60 relative overflow-hidden rounded text-center text-white">
                     <div class="absolute top-0 right-0 bg-purple-500 text-white text-[9px] font-bold px-2 py-1 uppercase tracking-widest">Acelerador</div>
-                    <p class="text-gray-400 uppercase tracking-widest text-xs mb-2">A cada ${fmt.format(CONFIG.valorFaixa)} extras</p>
-                    <h3 class="text-4xl font-extrabold text-white mb-4">+ ${fmt.format(CONFIG.bonusPorFaixa)}</h3>
-                    <div class="h-px w-full bg-white/10 mb-4"></div>
-                    <p class="text-gray-400 text-xs leading-relaxed uppercase tracking-widest">Lucro ilimitado por escala.</p>
+                    <p class="text-gray-400 uppercase tracking-widest text-xs mb-2 text-white">A cada ${fmt.format(CONFIG.valorFaixa)} extras</p>
+                    <h3 class="text-4xl font-extrabold text-white text-white mb-4">+ ${fmt.format(CONFIG.bonusPorFaixa)}</h3>
+                    <div class="h-px w-12 bg-purple-500 mx-auto mb-4 mt-2"></div>
+                    <p class="text-gray-400 text-[10px] leading-relaxed uppercase tracking-widest text-white">Escalonamento ilimitado.</p>
                 </div>
             `;
 
             if(CONFIG.marketing.show) {
                  cardsContainer.innerHTML += `
-                    <div class="border border-emerald-500/50 p-8 bg-black/60 relative overflow-hidden rounded col-span-1 md:col-span-2 lg:col-span-3">
-                        <div class="absolute top-0 right-0 bg-emerald-500 text-white text-[9px] font-bold px-2 py-1 uppercase tracking-widest">Verba Adicional</div>
+                    <div class="border border-emerald-500/50 p-8 bg-black/60 relative overflow-hidden rounded col-span-1 md:col-span-2 lg:col-span-3 text-white">
+                        <div class="absolute top-0 right-0 bg-emerald-500 text-white text-[9px] font-bold px-2 py-1 uppercase tracking-widest text-white text-white">Verba Adicional</div>
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                             <div>
                                 <p class="text-gray-400 uppercase tracking-widest text-xs mb-1">${CONFIG.marketing.label}</p>
-                                <h3 class="text-4xl font-black text-white">${fmt.format(CONFIG.marketing.valor)}</h3>
+                                <h3 class="text-4xl font-black text-white text-white text-white text-white">${fmt.format(CONFIG.marketing.valor)}</h3>
                             </div>
-                            <p class="text-gray-400 text-xs max-w-md">${CONFIG.marketing.desc}</p>
+                            <p class="text-gray-300 text-xs max-w-md leading-relaxed text-white">${CONFIG.marketing.desc}</p>
                         </div>
                     </div>
                 `;
             }
 
-            const scenarios = [
+            document.getElementById('scenarios-container').innerHTML = [
                 { meta: CONFIG.metaBase, label: "Cenário 1", desc: "Fixo Base" },
                 { meta: CONFIG.metaBase + CONFIG.valorFaixa, label: "Cenário 2", desc: `Fixo + 1 Faixa` },
                 { meta: CONFIG.metaBase + (CONFIG.valorFaixa * 2), label: "Cenário 3", desc: `Fixo + 2 Faixas` }
-            ];
-            document.getElementById('scenarios-container').innerHTML = scenarios.map((s, i) => {
+            ].map((s, i) => {
                 const total = CONFIG.valorFixo + (i * CONFIG.bonusPorFaixa);
                 const color = ['pink-500', 'purple-500', 'emerald-500'][i];
-                return `
-                    <div class="bg-black/60 border border-white/5 p-5 text-center rounded">
-                        <p class="text-gray-400 text-[10px] uppercase mb-2 tracking-widest">${s.label}</p>
-                        <p class="text-white font-bold text-lg mb-1">${fmt.format(s.meta)}</p>
+                return `<div class="bg-black/60 border border-white/5 p-5 text-center rounded text-white">
+                        <p class="text-gray-400 text-[10px] uppercase mb-2 tracking-widest text-white">${s.label}</p>
+                        <p class="text-white font-bold text-lg mb-1 text-white">${fmt.format(s.meta)}</p>
                         <div class="h-px w-12 bg-${color} mx-auto mb-4 mt-4"></div>
                         <p class="text-${color} font-black text-2xl mb-1">${fmt.format(total)}</p>
-                        <p class="text-[10px] text-gray-500 uppercase">Considerando Opção A</p>
+                        <p class="text-[9px] text-gray-500 uppercase tracking-tighter text-white">Baseado na Opção A</p>
                     </div>`;
             }).join('');
 
+            // KPI Restaurado (Exemplo em rosa conforme imagem)
             document.getElementById('kpi-section').innerHTML = `
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="bg-pink-500/20 p-3 rounded-full"><i data-lucide="shield-check" class="w-6 h-6 text-pink-500"></i></div>
-                    <h3 class="text-xl font-bold uppercase">${CONFIG.kpi.title}</h3>
+                <div class="flex items-center gap-4 mb-6 text-white">
+                    <div class="bg-pink-500/10 p-3 rounded-full flex items-center justify-center w-12 h-12">
+                        <i data-lucide="shield-check" class="w-6 h-6 text-pink-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white uppercase">${CONFIG.kpi.title}</h3>
                 </div>
-                <p class="text-gray-300 mb-4 text-sm leading-relaxed">${CONFIG.kpi.desc}</p>
-                <div class="bg-black/50 p-4 border border-white/5 rounded">
-                    <p class="font-bold text-white uppercase text-xs">${CONFIG.kpi.regra}:</p>
-                    <p class="text-[11px] text-pink-400 mt-2 italic">${CONFIG.kpi.example}</p>
+                <p class="text-gray-300 mb-6 text-sm leading-relaxed">${CONFIG.kpi.desc}</p>
+                <div class="bg-black/40 p-6 rounded-sm border border-white/5">
+                    <p class="font-bold text-white uppercase text-[10px] mb-2 tracking-widest">${CONFIG.kpi.regra}</p>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">${CONFIG.kpi.ruleDesc}</p>
+                    <p class="text-xs text-pink-500 leading-relaxed italic font-medium">${CONFIG.kpi.example}</p>
                 </div>
             `;
 
@@ -338,54 +336,47 @@
             if(CONFIG.isDualPath) {
                 const half = CONFIG.valorFixo / 2;
                 paymentContainer.innerHTML = `
-                    <div class="border border-white/5 p-6 rounded bg-white/5">
-                        <h4 class="text-pink-500 font-black text-xs uppercase tracking-widest mb-4">Opção A: Segurança 50/50</h4>
-                        <ul class="space-y-4 text-sm">
-                            <li class="flex gap-3"><span class="text-pink-500 font-bold">1</span> <span>${fmt.format(half)} antecipado na assinatura.</span></li>
-                            <li class="flex gap-3"><span class="text-pink-500 font-bold">2</span> <span>${fmt.format(half)} + Bônus após entrega da meta e validação de KPI.</span></li>
+                    <div class="border border-white/5 p-6 rounded bg-white/5 text-white">
+                        <h4 class="text-pink-500 font-black text-xs uppercase tracking-widest mb-4">${CONFIG.titleOptionA}</h4>
+                        <ul class="space-y-4 text-sm text-gray-300 text-white">
+                            <li class="flex gap-3 text-white"><span class="text-pink-500 font-bold">1</span> <span>${fmt.format(half)} antecipado na assinatura do contrato.</span></li>
+                            <li class="flex gap-3 text-white"><span class="text-pink-500 font-bold">2</span> <span>${fmt.format(half)} + Bônus após entrega da meta e validação de KPI.</span></li>
                         </ul>
                     </div>
-                    <div class="border border-white/5 p-6 rounded bg-purple-500/5">
-                        <h4 class="text-purple-500 font-black text-xs uppercase tracking-widest mb-4">Opção B: Fixo Aumentado (Pós Performance)</h4>
-                        <ul class="space-y-4 text-sm">
-                            <li class="flex gap-3"><span class="text-purple-500 font-bold">!</span> <span>${fmt.format(CONFIG.valorFixoPremium)} (Fixo Premium) + Bônus pagos integralmente após a entrega da meta e validação de KPI.</span></li>
+                    <div class="border border-white/5 p-6 rounded bg-purple-500/5 text-white">
+                        <h4 class="text-purple-500 font-black text-xs uppercase tracking-widest mb-4">${CONFIG.titleOptionB}</h4>
+                        <ul class="space-y-4 text-sm text-gray-300 text-white">
+                            <li class="flex gap-3 text-white"><span class="text-purple-500 font-bold">!</span> <span>${fmt.format(CONFIG.valorFixoPotencializado)} (Integral) + Bônus pagos integralmente após a entrega da meta e validação de KPI.</span></li>
                         </ul>
                     </div>
                 `;
             } else {
                 let steps = [];
                 if(CONFIG.paymentMode === 1) {
-                    steps = [{ title: `100% Antecipado (${fmt.format(CONFIG.valorFixo)})`, desc: "Pago mediante assinatura do contrato." }, { title: "Aceleradores", desc: "Pagos após término do ciclo e validação de KPI." }];
+                    steps = [{ title: `100% Antecipado (${fmt.format(CONFIG.valorFixo)})`, desc: "Pago mediante assinatura do contrato." }, { title: "Performance", desc: "Bônus pagos após término do ciclo e validação de KPI." }];
                 } else if(CONFIG.paymentMode === 2) {
                     const h = CONFIG.valorFixo / 2;
                     steps = [{ title: `50% Antecipado (${fmt.format(h)})`, desc: "Pago mediante assinatura do contrato." }, { title: `50% Final (${fmt.format(h)}) + Bônus`, desc: "Pagos após o ciclo e validação de KPI." }];
                 } else {
-                    steps = [{ title: `Pagamento Integral (${fmt.format(CONFIG.valorFixo)} + Bônus)`, desc: "Totalidade paga integralmente após validação de KPI ao fim da operação." }];
+                    steps = [{ title: `Integral Pós (${fmt.format(CONFIG.valorFixo)} + Bônus)`, desc: "Totalidade paga após validação de KPI ao fim da operação." }];
                 }
-                paymentContainer.innerHTML = steps.map((s, i) => `
-                    <div class="flex gap-4">
-                        <div class="text-purple-500 font-black text-xl">${i+1}</div>
-                        <div><p class="font-bold text-white">${s.title}</p><p class="text-xs text-gray-400">${s.desc}</p></div>
-                    </div>
-                `).join('');
+                paymentContainer.innerHTML = steps.map((s, i) => `<div class="flex gap-4 text-white"><div class="text-purple-500 font-black text-xl text-white">${i+1}</div><div><p class="font-bold text-white">${s.title}</p><p class="text-xs text-gray-400 text-white">${s.desc}</p></div></div>`).join('');
             }
 
             if(CONFIG.clauses.length > 0) {
                 document.getElementById('additional-clauses-container').classList.remove('hidden');
-                document.getElementById('clauses-list').innerHTML = CONFIG.clauses.map(c => `<li class="flex gap-3"><span class="text-pink-500 text-xs mt-1">/</span><span>${c}</span></li>`).join('');
+                document.getElementById('clauses-list').innerHTML = CONFIG.clauses.map(c => `<li class="flex gap-3 text-white"><span class="text-pink-500 text-xs mt-1">/</span><span>${c}</span></li>`).join('');
             }
             lucide.createIcons();
         }
 
         const passInput = document.getElementById('password-input');
         passInput.addEventListener('keypress', (e) => e.key === 'Enter' && checkPassword());
-        
         function checkPassword() {
             if(passInput.value === CONFIG.password) {
-                const lock = document.getElementById('lock-screen');
-                lock.style.opacity = '0';
+                document.getElementById('lock-screen').style.opacity = '0';
                 setTimeout(() => {
-                    lock.style.display = 'none';
+                    document.getElementById('lock-screen').style.display = 'none';
                     document.getElementById('main-content').classList.remove('hidden');
                     init();
                 }, 700);
