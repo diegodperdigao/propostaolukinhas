@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Comercial | 3C Gaming</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #030008; color: #fff; overflow-x: hidden; }
+
+        .bg-fluid {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
+            background: #030008; 
+            background-image: 
+                radial-gradient(circle at 75% 40%, rgba(255, 0, 127, 0.03) 0%, transparent 60%),
+                radial-gradient(circle at 25% 80%, rgba(106, 13, 173, 0.05) 0%, transparent 60%);
+            filter: blur(40px);
+        }
+
+        .bg-noise {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.08; 
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .glass-panel { background: rgba(10, 10, 10, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+
+        .mosaic-wrapper {
+            position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; 
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0px, transparent 90px, black 250px, black 60%, transparent 100%);
+            mask-image: linear-gradient(to bottom, transparent 0px, transparent 90px, black 250px, black 60%, transparent 100%);
+        }
+        
+        .mosaic-container {
+            position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            transform: perspective(1000px) rotateX(25deg) rotateY(-15deg) rotateZ(10deg);
+            transform-origin: center;
+        }
+        
+        .mosaic-pattern {
+            width: 100%; height: 100%;
+            background-size: 180px; background-repeat: repeat;
+            opacity: 0.28; animation: panMosaic 25s linear infinite;
+        }
+
+        @keyframes panMosaic {
+            from { background-position: 0px 0px; }
+            to { background-position: -180px -180px; }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        .shake { animation: shake 0.2s ease-in-out 0s 2; border-color: #ef4444 !important; }
+    </style>
+</head>
+<body class="antialiased selection:bg-pink-500 selection:text-white">
+
+    <!-- Tela de Bloqueio -->
+    <div id="lock-screen" class="fixed inset-0 z-[100] flex items-center justify-center bg-[#030008] transition-opacity duration-700">
+        <div class="bg-fluid"></div>
+        <div class="bg-noise"></div>
+        <div class="max-w-md w-full px-8 text-center">
+            <div class="mb-8 flex flex-col items-center">
+                <img src="https://i.ibb.co/TDvNpKbv/285535120-111261434935979-5560566145880188190-n.jpg" alt="3C" class="h-16 w-16 rounded-full object-cover border-2 border-white/10 mb-4">
+                <h2 class="text-xs font-bold tracking-[0.3em] uppercase text-gray-400">Acesso Restrito</h2>
+            </div>
+            <div class="glass-panel p-8 rounded-lg border border-white/10 shadow-2xl">
+                <p class="text-sm text-gray-300 mb-6 tracking-wide">Insira a senha de acesso comercial.</p>
+                <div class="space-y-4">
+                    <input type="password" id="password-input" placeholder="••••••••" 
+                        class="w-full bg-black/40 border border-white/10 px-4 py-4 rounded text-center text-white focus:outline-none focus:border-pink-500 transition-all tracking-widest">
+                    <button onclick="checkPassword()" class="w-full bg-white text-black font-black uppercase tracking-widest py-4 rounded hover:bg-pink-500 hover:text-white transition-all duration-300">
+                        Desbloquear
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <div id="main-content" class="hidden">
+        <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                <div class="bg-white/5 border border-white/10 p-1.5 pr-4 rounded-full flex items-center gap-3 backdrop-blur-md">
+                    <img src="https://i.ibb.co/TDvNpKbv/285535120-111261434935979-5560566145880188190-n.jpg" alt="3C" class="h-8 w-8 rounded-full object-cover">
+                    <span class="text-[0.65rem] tracking-[0.2em] uppercase text-gray-300 font-bold">Proposta Comercial</span>
+                </div>
+                <div class="hidden md:flex items-center gap-8 text-sm font-bold tracking-wider">
+                    <a href="#comercial" class="hover:text-pink-500 transition-colors">METAS</a>
+                    <a href="#regras" class="hover:text-pink-500 transition-colors">REGRAS</a>
+                </div>
+            </div>
+        </nav>
+
+        <header class="min-h-[85vh] relative flex items-center pt-32 pb-24 overflow-hidden border-b border-white/5">
+            <div class="mosaic-wrapper"><div class="mosaic-container"><div id="mosaic-target" class="mosaic-pattern"></div></div></div>
+            
+            <div class="absolute top-20 md:top-24 left-0 w-full z-20">
+                <div class="max-w-7xl mx-auto px-6 text-left">
+                    <div class="inline-block opacity-80 hover:opacity-100 transition-opacity duration-500">
+                        <p class="font-mono text-[9px] sm:text-[10px] text-gray-400 tracking-[0.3em] uppercase flex items-center gap-4 cursor-default">
+                            <span class="w-8 md:w-12 h-px bg-gradient-to-r from-purple-500 to-pink-500 hidden md:block"></span> 
+                            Strategy_Creative_Production_Bizdev
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 w-full relative z-10 flex flex-col items-center justify-center">
+                <div class="max-w-5xl text-center">
+                    <h1 id="influencer-name" class="text-4xl sm:text-6xl md:text-7xl lg:text-[7.5rem] font-black leading-none tracking-tighter text-white drop-shadow-2xl uppercase">...</h1>
+                    <a href="#comercial" class="mt-8 relative inline-block bg-white text-black font-extrabold uppercase tracking-[0.15em] px-10 py-5 text-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[8px_8px_0px_#111111]">
+                        Ver Detalhes do Acordo
+                        <div class="absolute top-1 right-1 w-1.5 h-1.5 bg-black"></div>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <section id="comercial" class="pt-20 pb-24 relative z-10 border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl font-bold tracking-wider mb-2 uppercase">Metas e Comissionamento</h2>
+                <div class="w-12 h-1 bg-pink-500 mb-12"></div>
+                
+                <div id="meta-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                    <!-- Gerado Dinamicamente -->
+                </div>
+
+                <div class="bg-white/5 border border-white/10 p-6 rounded-sm">
+                    <h4 class="text-sm uppercase tracking-widest text-gray-500 mb-6 font-bold flex items-center gap-2">
+                        <i data-lucide="trending-up" class="w-4 h-4"></i> Exemplo de Apuração
+                    </h4>
+                    <div id="scenarios-container" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="regras" class="pt-20 pb-24 relative z-10 border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl font-bold tracking-wider mb-2 uppercase text-white">Regras e Prazos</h2>
+                <div class="w-12 h-1 bg-pink-500 mb-12"></div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div id="kpi-section" class="glass-panel p-8 border-l-4 border-l-pink-500"></div>
+
+                    <div class="glass-panel p-8 border-l-4 border-l-purple-500">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="bg-purple-500/20 p-3 rounded-full"><i data-lucide="wallet" class="w-6 h-6 text-purple-500"></i></div>
+                            <h3 id="payment-title" class="text-xl font-bold uppercase">Recebimento</h3>
+                        </div>
+                        <div id="payment-dual-path-container" class="space-y-8">
+                            <!-- Gerado Dinamicamente -->
+                        </div>
+                    </div>
+                </div>
+
+                <div id="additional-clauses-container" class="mt-12 hidden">
+                    <div class="bg-white/5 p-8 border border-white/5">
+                        <h4 class="text-xs font-black uppercase tracking-[0.3em] text-gray-500 mb-6 italic">Observações Importantes</h4>
+                        <ul id="clauses-list" class="space-y-3 text-sm text-gray-400"></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="py-12 bg-black border-t border-white/10 text-center">
+            <img src="https://i.ibb.co/chfw0cND/Horizontal-Com-Tag-W.png" alt="3C" class="h-10 mx-auto opacity-70 mb-4">
+            <p class="text-[10px] text-gray-500 uppercase tracking-widest">Confidencial &copy; 2026 3C Gaming BizDev</p>
+        </footer>
+    </div>
+
+    <script>
+        /* ==========================================================================
+           FICHA TÉCNICA DA PROPOSTA (EDITÁVEL MANUALMENTE)
+           ========================================================================== 
+           Basta alterar os valores à direita dos dois pontos (:)
+        */
+        const CONFIG = {
+            // Identidade
+            influencer: "O LUKINHAS",
+            partnerLogo: "https://i.ibb.co/DgVdfDmz/image-7-1.png",
+            password: "3c2026",
+
+            // Valores Financeiros
+            metaBase: 200000,      // Meta em Reais de depósitos
+            valorFixo: 20000,      // Valor para Molde 1, 2 ou Caminho 1
+            valorFixoPremium: 25000, // Valor aumentado (usado apenas se isDualPath for true)
+            bonusPorFaixa: 10000,  // Bônus a cada faixa atingida
+            valorFaixa: 100000,    // Valor de cada faixa extra (ex: 10k em 10k)
+
+            /* CONFIGURAÇÃO DE PAGAMENTO
+               isDualPath: true (Mostra 2 opções de escolha) | false (Mostra apenas 1 modo)
+            */
+            isDualPath: true, 
+
+            /* MODO ÚNICO (Só funciona se isDualPath for false)
+               1: 100% Antecipado 
+               2: 50% Antecipado + 50% Final 
+               3: Pós Performance (Fixo + Bônus no final)
+            */
+            paymentMode: 2, 
+            
+            // Verba de Marketing (Ativações com Viewers)
+            marketing: {
+                show: true,           // true = mostra o card | false = esconde
+                label: "Ações de Marketing",
+                valor: 1000,
+                desc: "Verba destinada a ativações e sorteios com viewers."
+            },
+
+            // Regra de Wager (KPI)
+            kpi: {
+                title: "Qualidade (KPI)",
+                regra: "Regra 2X",
+                desc: "O volume total apostado deve ser no mínimo o dobro (2x) do valor depositado.",
+                example: "Requer-se R$ 2,00 em Wager para cada R$ 1,00 depositado."
+            },
+
+            // Cláusulas Adicionais (Adicione entre aspas e separe por vírgula)
+            clauses: [
+                "Exclusividade no segmento iGaming durante o período de vigência.",
+                "Uso de imagem autorizado para mídias proprietárias da marca.",
+                "A escolha entre os caminhos de pagamento deve ser feita no ato do aceite."
+            ]
+        };
+
+        /* ==========================================================================
+           LÓGICA DO MOTOR (NÃO É NECESSÁRIO EDITAR ABAIXO DESTE PONTO)
+           ========================================================================== 
+        */
+        const fmt = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+
+        function init() {
+            document.getElementById('influencer-name').innerText = CONFIG.influencer;
+            document.getElementById('mosaic-target').style.backgroundImage = `url('${CONFIG.partnerLogo}')`;
+
+            const cardsContainer = document.getElementById('meta-cards-grid');
+            
+            let fixoCardHTML = "";
+            if(CONFIG.isDualPath) {
+                fixoCardHTML = `
+                <div class="border border-pink-500 p-8 bg-black/80 relative overflow-hidden ring-4 ring-pink-500/20 rounded">
+                    <div class="absolute top-0 right-0 bg-pink-500 text-white text-[9px] font-bold px-2 py-1 uppercase tracking-widest animate-pulse">2 Opções Disponíveis</div>
+                    <p class="text-gray-400 uppercase tracking-widest text-xs mb-4">Escolha de Fixo</p>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-pink-500 text-[10px] font-bold uppercase mb-1">Opção A (Antecipado)</p>
+                            <h3 class="text-2xl font-black text-white">${fmt.format(CONFIG.valorFixo)}</h3>
+                        </div>
+                        <div class="h-px bg-white/10"></div>
+                        <div>
+                            <p class="text-purple-500 text-[10px] font-bold uppercase mb-1">Opção B (Pós + Bônus)</p>
+                            <h3 class="text-3xl font-black text-white">${fmt.format(CONFIG.valorFixoPremium)}</h3>
+                        </div>
+                    </div>
+                </div>`;
+            } else {
+                fixoCardHTML = `
+                <div class="border border-pink-500/50 p-8 bg-black/60 relative overflow-hidden rounded">
+                    <div class="absolute top-0 right-0 bg-pink-500 text-white text-[9px] font-bold px-2 py-1 uppercase tracking-widest">Valor Fixo</div>
+                    <p class="text-gray-400 uppercase tracking-widest text-xs mb-2">Garantido</p>
+                    <h3 class="text-4xl font-extrabold text-white mb-4">${fmt.format(CONFIG.valorFixo)}</h3>
+                    <div class="h-px w-full bg-white/10 mb-4"></div>
+                    <p class="text-gray-400 text-xs leading-relaxed uppercase tracking-widest">Pago conforme cronograma abaixo.</p>
+                </div>`;
+            }
+
+            cardsContainer.innerHTML = `
+                <div class="border border-white/20 p-8 bg-black/60 relative overflow-hidden rounded">
+                    <div class="absolute top-0 right-0 bg-white/20 text-white text-[9px] font-bold px-2 py-1 uppercase tracking-widest">Meta Base</div>
+                    <p class="text-gray-400 uppercase tracking-widest text-xs mb-2">Volume de Depósitos</p>
+                    <h3 class="text-4xl font-extrabold text-white mb-4">${fmt.format(CONFIG.metaBase)}</h3>
+                    <div class="h-px w-full bg-white/10 mb-4"></div>
+                    <p class="text-gray-400 text-xs leading-relaxed uppercase tracking-widest">Gatilho inicial de performance.</p>
+                </div>
+                ${fixoCardHTML}
+                <div class="border border-purple-500/50 p-8 bg-black/60 relative overflow-hidden rounded">
+                    <div class="absolute top-0 right-0 bg-purple-500 text-white text-[9px] font-bold px-2 py-1 uppercase tracking-widest">Acelerador</div>
+                    <p class="text-gray-400 uppercase tracking-widest text-xs mb-2">A cada ${fmt.format(CONFIG.valorFaixa)} extras</p>
+                    <h3 class="text-4xl font-extrabold text-white mb-4">+ ${fmt.format(CONFIG.bonusPorFaixa)}</h3>
+                    <div class="h-px w-full bg-white/10 mb-4"></div>
+                    <p class="text-gray-400 text-xs leading-relaxed uppercase tracking-widest">Lucro ilimitado por escala.</p>
+                </div>
+            `;
+
+            if(CONFIG.marketing.show) {
+                 cardsContainer.innerHTML += `
+                    <div class="border border-emerald-500/50 p-8 bg-black/60 relative overflow-hidden rounded col-span-1 md:col-span-2 lg:col-span-3">
+                        <div class="absolute top-0 right-0 bg-emerald-500 text-white text-[9px] font-bold px-2 py-1 uppercase tracking-widest">Verba Adicional</div>
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <p class="text-gray-400 uppercase tracking-widest text-xs mb-1">${CONFIG.marketing.label}</p>
+                                <h3 class="text-4xl font-black text-white">${fmt.format(CONFIG.marketing.valor)}</h3>
+                            </div>
+                            <p class="text-gray-400 text-xs max-w-md">${CONFIG.marketing.desc}</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            const scenarios = [
+                { meta: CONFIG.metaBase, label: "Cenário 1", desc: "Fixo Base" },
+                { meta: CONFIG.metaBase + CONFIG.valorFaixa, label: "Cenário 2", desc: `Fixo + 1 Faixa` },
+                { meta: CONFIG.metaBase + (CONFIG.valorFaixa * 2), label: "Cenário 3", desc: `Fixo + 2 Faixas` }
+            ];
+            document.getElementById('scenarios-container').innerHTML = scenarios.map((s, i) => {
+                const total = CONFIG.valorFixo + (i * CONFIG.bonusPorFaixa);
+                const color = ['pink-500', 'purple-500', 'emerald-500'][i];
+                return `
+                    <div class="bg-black/60 border border-white/5 p-5 text-center rounded">
+                        <p class="text-gray-400 text-[10px] uppercase mb-2 tracking-widest">${s.label}</p>
+                        <p class="text-white font-bold text-lg mb-1">${fmt.format(s.meta)}</p>
+                        <div class="h-px w-12 bg-${color} mx-auto mb-4 mt-4"></div>
+                        <p class="text-${color} font-black text-2xl mb-1">${fmt.format(total)}</p>
+                        <p class="text-[10px] text-gray-500 uppercase">Considerando Opção A</p>
+                    </div>`;
+            }).join('');
+
+            document.getElementById('kpi-section').innerHTML = `
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="bg-pink-500/20 p-3 rounded-full"><i data-lucide="shield-check" class="w-6 h-6 text-pink-500"></i></div>
+                    <h3 class="text-xl font-bold uppercase">${CONFIG.kpi.title}</h3>
+                </div>
+                <p class="text-gray-300 mb-4 text-sm leading-relaxed">${CONFIG.kpi.desc}</p>
+                <div class="bg-black/50 p-4 border border-white/5 rounded">
+                    <p class="font-bold text-white uppercase text-xs">${CONFIG.kpi.regra}:</p>
+                    <p class="text-[11px] text-pink-400 mt-2 italic">${CONFIG.kpi.example}</p>
+                </div>
+            `;
+
+            const paymentContainer = document.getElementById('payment-dual-path-container');
+            if(CONFIG.isDualPath) {
+                const half = CONFIG.valorFixo / 2;
+                paymentContainer.innerHTML = `
+                    <div class="border border-white/5 p-6 rounded bg-white/5">
+                        <h4 class="text-pink-500 font-black text-xs uppercase tracking-widest mb-4">Opção A: Segurança 50/50</h4>
+                        <ul class="space-y-4 text-sm">
+                            <li class="flex gap-3"><span class="text-pink-500 font-bold">1</span> <span>${fmt.format(half)} antecipado na assinatura.</span></li>
+                            <li class="flex gap-3"><span class="text-pink-500 font-bold">2</span> <span>${fmt.format(half)} + Bônus após entrega da meta e validação de KPI.</span></li>
+                        </ul>
+                    </div>
+                    <div class="border border-white/5 p-6 rounded bg-purple-500/5">
+                        <h4 class="text-purple-500 font-black text-xs uppercase tracking-widest mb-4">Opção B: Fixo Aumentado (Pós Performance)</h4>
+                        <ul class="space-y-4 text-sm">
+                            <li class="flex gap-3"><span class="text-purple-500 font-bold">!</span> <span>${fmt.format(CONFIG.valorFixoPremium)} (Fixo Premium) + Bônus pagos integralmente após a entrega da meta e validação de KPI.</span></li>
+                        </ul>
+                    </div>
+                `;
+            } else {
+                let steps = [];
+                if(CONFIG.paymentMode === 1) {
+                    steps = [{ title: `100% Antecipado (${fmt.format(CONFIG.valorFixo)})`, desc: "Pago mediante assinatura do contrato." }, { title: "Aceleradores", desc: "Pagos após término do ciclo e validação de KPI." }];
+                } else if(CONFIG.paymentMode === 2) {
+                    const h = CONFIG.valorFixo / 2;
+                    steps = [{ title: `50% Antecipado (${fmt.format(h)})`, desc: "Pago mediante assinatura do contrato." }, { title: `50% Final (${fmt.format(h)}) + Bônus`, desc: "Pagos após o ciclo e validação de KPI." }];
+                } else {
+                    steps = [{ title: `Pagamento Integral (${fmt.format(CONFIG.valorFixo)} + Bônus)`, desc: "Totalidade paga integralmente após validação de KPI ao fim da operação." }];
+                }
+                paymentContainer.innerHTML = steps.map((s, i) => `
+                    <div class="flex gap-4">
+                        <div class="text-purple-500 font-black text-xl">${i+1}</div>
+                        <div><p class="font-bold text-white">${s.title}</p><p class="text-xs text-gray-400">${s.desc}</p></div>
+                    </div>
+                `).join('');
+            }
+
+            if(CONFIG.clauses.length > 0) {
+                document.getElementById('additional-clauses-container').classList.remove('hidden');
+                document.getElementById('clauses-list').innerHTML = CONFIG.clauses.map(c => `<li class="flex gap-3"><span class="text-pink-500 text-xs mt-1">/</span><span>${c}</span></li>`).join('');
+            }
+            lucide.createIcons();
+        }
+
+        const passInput = document.getElementById('password-input');
+        passInput.addEventListener('keypress', (e) => e.key === 'Enter' && checkPassword());
+        
+        function checkPassword() {
+            if(passInput.value === CONFIG.password) {
+                const lock = document.getElementById('lock-screen');
+                lock.style.opacity = '0';
+                setTimeout(() => {
+                    lock.style.display = 'none';
+                    document.getElementById('main-content').classList.remove('hidden');
+                    init();
+                }, 700);
+            } else {
+                passInput.classList.add('shake');
+                passInput.value = '';
+                setTimeout(() => passInput.classList.remove('shake'), 500);
+            }
+        }
+    </script>
+</body>
+</html>
