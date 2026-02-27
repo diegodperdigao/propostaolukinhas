@@ -113,9 +113,9 @@
                     <img src="https://i.ibb.co/TDvNpKbv/285535120-111261434935979-5560566145880188190-n.jpg" alt="3C" class="h-8 w-8 rounded-full object-cover">
                     <span class="text-[0.65rem] tracking-[0.2em] uppercase text-gray-300 font-bold">Proposta Comercial</span>
                 </div>
-                <div class="hidden md:flex items-center gap-8 text-sm font-bold tracking-wider">
-                    <a href="#comercial" class="hover:text-pink-500 transition-colors text-white">METAS</a>
-                    <a href="#regras" class="hover:text-pink-500 transition-colors text-white">REGRAS</a>
+                <div class="hidden md:flex items-center gap-8 text-sm font-bold tracking-wider text-white">
+                    <a href="#comercial" class="hover:text-pink-500 transition-colors">METAS</a>
+                    <a href="#regras" class="hover:text-pink-500 transition-colors">REGRAS</a>
                 </div>
             </div>
         </nav>
@@ -124,12 +124,11 @@
         <header class="min-h-[85vh] relative flex items-center pt-32 pb-24 overflow-hidden border-b border-white/5">
             <div class="mosaic-wrapper"><div class="mosaic-container"><div id="mosaic-target" class="mosaic-pattern"></div></div></div>
             
-            <!-- Assinatura Institucional -->
             <div class="absolute top-20 md:top-24 left-0 w-full z-20">
                 <div class="max-w-7xl mx-auto px-6 text-left">
                     <div class="inline-block opacity-80">
                         <p class="font-mono text-[9px] sm:text-[10px] text-gray-400 tracking-[0.3em] uppercase flex items-center gap-4 cursor-default">
-                            <span class="w-8 md:w-12 h-px bg-gradient-to-r from-purple-500 to-pink-500 hidden md:block"></span> 
+                            <span class="w-8 md:w-12 h-px bg-gradient-to-r from-purple-500 to-pink-500 hidden md:block text-white"></span> 
                             Strategy_Creative_Production_Bizdev
                         </p>
                     </div>
@@ -148,7 +147,7 @@
             </div>
         </header>
 
-        <!-- Metas e Comissionamento (Centralizados) -->
+        <!-- Metas e Comissionamento -->
         <section id="comercial" class="pt-20 pb-24 relative z-10 border-t border-white/10">
             <div class="max-w-7xl mx-auto px-6">
                 <h2 class="text-3xl font-bold tracking-wider mb-2 uppercase text-white">Metas e Comissionamento</h2>
@@ -167,13 +166,13 @@
             </div>
         </section>
 
-        <!-- Regras e Prazos (KPI Fiel à Foto) -->
+        <!-- Regras e Prazos -->
         <section id="regras" class="pt-20 pb-24 relative z-10 border-t border-white/10">
-            <div class="max-w-7xl mx-auto px-6 text-white">
+            <div class="max-w-7xl mx-auto px-6 text-white text-white">
                 <h2 class="text-3xl font-bold tracking-wider mb-2 uppercase text-white">Regras e Prazos</h2>
-                <div class="w-12 h-1 bg-pink-500 mb-12"></div>
+                <div class="w-12 h-1 bg-pink-500 mb-12 text-white"></div>
 
-                <div class="grid md:grid-cols-2 gap-12 items-start">
+                <div class="grid md:grid-cols-2 gap-12 items-start text-white">
                     <!-- KPI Section -->
                     <div id="kpi-section" class="bg-[#0a0a0a]/80 p-10 border-l-4 border-pink-500 relative">
                         <!-- Gerado via JS -->
@@ -181,17 +180,16 @@
 
                     <!-- Pagamentos Card -->
                     <div class="glass-panel p-8 border-l-4 border-l-purple-500 text-white">
-                        <div class="flex items-center gap-4 mb-8">
-                            <div class="bg-purple-500/20 p-3 rounded-full"><i data-lucide="wallet" class="w-6 h-6 text-purple-500"></i></div>
+                        <div class="flex items-center gap-4 mb-8 text-white">
+                            <div class="bg-purple-500/20 p-3 rounded-full text-white"><i data-lucide="wallet" class="w-6 h-6 text-purple-500"></i></div>
                             <h3 id="payment-title" class="text-xl font-bold uppercase text-white">Recebimento</h3>
                         </div>
-                        <div id="payment-dual-path-container" class="space-y-10">
+                        <div id="payment-dual-path-container" class="space-y-10 text-white">
                             <!-- Gerado via JS -->
                         </div>
                     </div>
                 </div>
 
-                <!-- Observações -->
                 <div id="additional-clauses-container" class="mt-12 hidden">
                     <div class="bg-white/5 p-8 border border-white/5 text-white">
                         <h4 class="text-xs font-black uppercase tracking-[0.3em] text-gray-500 mb-6 italic">Observações Importantes</h4>
@@ -202,7 +200,7 @@
         </section>
 
         <footer class="py-12 bg-black border-t border-white/10 text-center text-white">
-            <img src="https://i.ibb.co/chfw0cND/Horizontal-Com-Tag-W.png" alt="3C" class="h-10 mx-auto opacity-70 mb-4">
+            <img src="https://i.ibb.co/chfw0cND/Horizontal-Com-Tag-W.png" alt="3C" class="h-10 mx-auto opacity-70 mb-4 text-white">
             <p class="text-[10px] text-gray-500 uppercase tracking-widest text-white">Confidencial &copy; 2026 3C Gaming BizDev</p>
         </footer>
     </div>
@@ -213,29 +211,23 @@
            ========================================================================== 
         */
         const CONFIG = {
-            // Identidade
             influencer: "O LUKINHAS",
             partnerLogo: "https://i.ibb.co/DgVdfDmz/image-7-1.png",
             password: "3c2026",
 
-            // Valores Financeiros
             metaBase: 200000,      
             valorFixo: 20000,      
             valorFixoPotencializado: 25000, 
             bonusPorFaixa: 10000,  
             valorFaixa: 100000,
 
-            // Títulos das Opções (Sincronizados entre Metas e Cronograma)
-            titleOptionA: "Opção A (50% Antecipado)",
-            titleOptionB: "Opção B (Pós Perfomance)",
+            // Títulos das Opções Sincronizados
+            titleOptionA: "OPÇÃO A (50% ANTECIPADO)",
+            titleOptionB: "OPÇÃO B (PÓS PERFOMANCE)",
 
-            // MODO DUAL (true: mostra opções A e B | false: usa paymentMode único)
             isDualPath: true, 
-
-            // MODO ÚNICO (Se isDualPath for false) - 1: 100% Ant | 2: 50/50 | 3: Pós
             paymentMode: 2, 
             
-            // Verba de Marketing
             marketing: {
                 show: true,           
                 label: "AÇÕES DE MARKETING",
@@ -243,7 +235,6 @@
                 desc: "Verba destinada a ativações e sorteios com viewers durante as transmissões."
             },
 
-            // Regras de KPI
             kpi: {
                 title: "Controle de Qualidade (KPI)",
                 regra: "REGRA 2X:",
@@ -252,17 +243,12 @@
                 example: "Ex: Para meta de R$ 200.000, requer R$ 400.000 em apostas reais."
             },
 
-            // Cláusulas de Fecho
             clauses: [
                 "Exclusividade no segmento iGaming durante o período de vigência.",
                 "Uso de imagem autorizado para mídias proprietárias da marca."
             ]
         };
 
-        /* ==========================================================================
-           MOTOR DO SITE (LÓGICA AUTOMÁTICA)
-           ========================================================================== 
-        */
         const fmt = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
 
         function init() {
@@ -271,74 +257,83 @@
 
             const cardsContainer = document.getElementById('meta-cards-grid');
             
-            // 1. Renderizar Card de Fixo (Opções ou Único)
             let fixoCardHTML = "";
             if(CONFIG.isDualPath) {
                 fixoCardHTML = `
-                <div class="border-2 border-pink-500 p-8 bg-black/80 relative overflow-hidden rounded text-center flex flex-col items-center justify-center min-h-[320px]">
+                <div class="border-2 border-pink-500 p-8 bg-black/80 relative overflow-hidden rounded text-center flex flex-col items-center justify-center min-h-[350px]">
                     <div class="absolute top-0 right-0 bg-pink-500 text-white text-[9px] font-bold px-3 py-1 uppercase tracking-widest animate-pulse">Escolha um Caminho</div>
-                    <p class="text-gray-400 uppercase tracking-[0.2em] text-[10px] mb-6">Opções de Fixo</p>
-                    <div class="w-full space-y-8">
-                        <div>
-                            <p class="text-pink-500 text-[9px] font-bold uppercase mb-2 tracking-widest">${CONFIG.titleOptionA}</p>
-                            <h3 class="text-4xl font-black text-white">${fmt.format(CONFIG.valorFixo)}</h3>
-                        </div>
-                        <div class="h-px bg-white/10 w-1/2 mx-auto"></div>
-                        <div>
-                            <p class="text-purple-500 text-[9px] font-bold uppercase mb-2 tracking-widest">${CONFIG.titleOptionB}</p>
-                            <h3 class="text-4xl font-black text-white">${fmt.format(CONFIG.valorFixoPotencializado)}</h3>
+                    
+                    <div class="w-full">
+                        <p class="text-gray-400 uppercase tracking-[0.2em] text-[10px] mb-8">Opções de Fixo</p>
+                        <div class="space-y-10">
+                            <div>
+                                <p class="text-pink-500 text-[9px] font-bold uppercase mb-2 tracking-widest">${CONFIG.titleOptionA}</p>
+                                <h3 class="text-5xl font-black text-white">${fmt.format(CONFIG.valorFixo)}</h3>
+                            </div>
+                            <div class="h-px bg-white/10 w-1/3 mx-auto"></div>
+                            <div>
+                                <p class="text-purple-500 text-[9px] font-bold uppercase mb-2 tracking-widest">${CONFIG.titleOptionB}</p>
+                                <h3 class="text-5xl font-black text-white">${fmt.format(CONFIG.valorFixoPotencializado)}</h3>
+                            </div>
                         </div>
                     </div>
                 </div>`;
             } else {
                 fixoCardHTML = `
-                <div class="border border-pink-500/40 p-8 bg-black/60 relative overflow-hidden rounded text-center flex flex-col items-center justify-center min-h-[320px]">
+                <div class="border border-pink-500/40 p-8 bg-black/60 relative overflow-hidden rounded text-center flex flex-col items-center justify-center min-h-[350px]">
                     <div class="absolute top-0 right-0 bg-pink-500 text-white text-[9px] font-bold px-2 py-1 uppercase tracking-widest">Valor Fixo</div>
-                    <p class="text-gray-400 uppercase tracking-widest text-xs mb-4">Garantido</p>
-                    <h3 class="text-5xl font-black text-white mb-6">${fmt.format(CONFIG.valorFixo)}</h3>
-                    <div class="h-px w-16 bg-pink-500 mb-6"></div>
-                    <p class="text-gray-400 text-[10px] uppercase tracking-widest">Fixo por Operação Mensal</p>
+                    <div class="w-full">
+                        <p class="text-gray-400 uppercase tracking-widest text-xs mb-4">Garantido</p>
+                        <h3 class="text-5xl font-black text-white mb-6">${fmt.format(CONFIG.valorFixo)}</h3>
+                        <div class="h-px w-16 bg-pink-500 mx-auto mb-6"></div>
+                        <p class="text-gray-400 text-[10px] uppercase tracking-widest">Fixo por Operação Mensal</p>
+                    </div>
                 </div>`;
             }
 
-            // 2. Montar Grid de Metas Centralizados
             cardsContainer.innerHTML = `
-                <div class="border border-white/10 p-8 bg-black/60 relative overflow-hidden rounded text-center flex flex-col items-center justify-center min-h-[320px]">
+                <!-- Meta Base (Verticalmente Centralizado) -->
+                <div class="border border-white/10 p-8 bg-black/60 relative overflow-hidden rounded text-center flex flex-col items-center justify-center min-h-[350px]">
                     <div class="absolute top-0 right-0 bg-white/10 text-white text-[9px] font-bold px-3 py-1 uppercase tracking-widest">Meta Base</div>
-                    <p class="text-gray-400 uppercase tracking-[0.2em] text-[10px] mb-4">Volume de Depósitos</p>
-                    <h3 class="text-5xl font-black text-white mb-6">${fmt.format(CONFIG.metaBase)}</h3>
-                    <div class="h-px w-16 bg-white/20 mb-6"></div>
-                    <p class="text-gray-400 text-[10px] uppercase tracking-widest">Gatilho de performance.</p>
+                    <div class="w-full">
+                        <p class="text-gray-400 uppercase tracking-[0.2em] text-[10px] mb-4">Volume de Depósitos</p>
+                        <h3 class="text-5xl font-black text-white mb-6">${fmt.format(CONFIG.metaBase)}</h3>
+                        <div class="h-px w-16 bg-white/20 mx-auto mb-6"></div>
+                        <p class="text-gray-400 text-[10px] uppercase tracking-widest">Gatilho de performance.</p>
+                    </div>
                 </div>
 
                 ${fixoCardHTML}
 
-                <div class="border border-purple-500/30 p-8 bg-black/60 relative overflow-hidden rounded text-center flex flex-col items-center justify-center min-h-[320px]">
-                    <div class="absolute top-0 right-0 bg-purple-500 text-white text-[9px] font-bold px-3 py-1 uppercase tracking-widest">Acelerador</div>
-                    <p class="text-gray-400 uppercase tracking-[0.2em] text-[10px] mb-4">A cada ${fmt.format(CONFIG.valorFaixa)} extras</p>
-                    <h3 class="text-5xl font-black text-white mb-6">+ ${fmt.format(CONFIG.bonusPorFaixa)}</h3>
-                    <div class="h-px w-16 bg-purple-500 mb-6"></div>
-                    <p class="text-gray-400 text-[10px] uppercase tracking-widest">Escalonamento ilimitado.</p>
+                <!-- Acelerador (Verticalmente Centralizado) -->
+                <div class="border border-purple-500/30 p-8 bg-black/60 relative overflow-hidden rounded text-center flex flex-col items-center justify-center min-h-[350px]">
+                    <div class="absolute top-0 right-0 bg-purple-500 text-white text-[9px] font-bold px-3 py-1 uppercase tracking-widest text-white">Acelerador</div>
+                    <div class="w-full">
+                        <p class="text-gray-400 uppercase tracking-[0.2em] text-[10px] mb-4">A cada ${fmt.format(CONFIG.valorFaixa)} extras</p>
+                        <h3 class="text-5xl font-black text-white mb-6 text-white">+ ${fmt.format(CONFIG.bonusPorFaixa)}</h3>
+                        <div class="h-px w-16 bg-purple-500 mx-auto mb-6"></div>
+                        <p class="text-gray-400 text-[10px] uppercase tracking-widest">Escalonamento ilimitado.</p>
+                    </div>
                 </div>
             `;
 
-            // 3. Verba de Marketing
+            // Verba Adicional
             if(CONFIG.marketing.show) {
                  cardsContainer.innerHTML += `
-                    <div class="border border-emerald-500/40 p-8 bg-black/60 relative overflow-hidden rounded col-span-1 md:col-span-2 lg:col-span-3">
+                    <div class="border border-emerald-500/40 p-10 bg-black/60 relative overflow-hidden rounded col-span-1 md:col-span-2 lg:col-span-3">
                         <div class="absolute top-0 right-0 bg-emerald-500 text-white text-[9px] font-bold px-3 py-1 uppercase tracking-widest">Verba Adicional</div>
-                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
                             <div class="text-center md:text-left">
                                 <p class="text-gray-400 uppercase tracking-[0.2em] text-[10px] mb-2">${CONFIG.marketing.label}</p>
-                                <h3 class="text-5xl font-black text-white">${fmt.format(CONFIG.marketing.valor)}</h3>
+                                <h3 class="text-6xl font-black text-white">${fmt.format(CONFIG.marketing.valor)}</h3>
                             </div>
-                            <p class="text-gray-300 text-sm max-w-lg leading-relaxed text-center md:text-left">${CONFIG.marketing.desc}</p>
+                            <p class="text-gray-300 text-base max-w-xl leading-relaxed text-center md:text-left">${CONFIG.marketing.desc}</p>
                         </div>
                     </div>
                 `;
             }
 
-            // 4. Cenários
+            // Exemplos
             document.getElementById('scenarios-container').innerHTML = [
                 { meta: CONFIG.metaBase, label: "Cenário 1", desc: "Fixo Base" },
                 { meta: CONFIG.metaBase + CONFIG.valorFaixa, label: "Cenário 2", desc: `Fixo + 1 Faixa` },
@@ -346,32 +341,32 @@
             ].map((s, i) => {
                 const total = CONFIG.valorFixo + (i * CONFIG.bonusPorFaixa);
                 const color = ['pink-500', 'purple-500', 'emerald-500'][i];
-                return `<div class="bg-black/60 border border-white/5 p-6 text-center rounded">
+                return `<div class="bg-black/60 border border-white/5 p-8 text-center rounded">
                         <p class="text-gray-400 text-[9px] uppercase mb-3 tracking-[0.2em]">${s.label}</p>
-                        <p class="text-white font-bold text-xl mb-1">${fmt.format(s.meta)}</p>
+                        <p class="text-white font-bold text-xl mb-1 text-white">${fmt.format(s.meta)}</p>
                         <div class="h-px w-10 bg-${color} mx-auto mb-4 mt-4"></div>
                         <p class="text-${color} font-black text-3xl mb-1">${fmt.format(total)}</p>
-                        <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-2">Baseado na Opção A</p>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest mt-2">Baseado na Opção A</p>
                     </div>`;
             }).join('');
 
-            // 5. KPI (Rigorosamente como na imagem)
+            // KPI Rigorosamente como na Foto (Exemplo em Rosa)
             document.getElementById('kpi-section').innerHTML = `
                 <div class="flex items-center gap-6 mb-8 text-white">
                     <div class="bg-[#1f121a] p-4 rounded-full flex items-center justify-center w-14 h-14 border border-pink-500/20 shadow-[0_0_15px_rgba(255,0,127,0.1)]">
                         <i data-lucide="shield-check" class="w-7 h-7 text-pink-500"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white tracking-tight">${CONFIG.kpi.title}</h3>
+                    <h3 class="text-2xl font-bold text-white tracking-tight uppercase">${CONFIG.kpi.title}</h3>
                 </div>
-                <p class="text-gray-300 mb-8 text-base leading-relaxed font-light">${CONFIG.kpi.desc}</p>
+                <p class="text-gray-300 mb-8 text-base leading-relaxed font-light text-white">${CONFIG.kpi.desc}</p>
                 <div class="bg-[#050505] p-8 rounded-sm border border-white/5">
-                    <p class="font-bold text-white uppercase text-xs mb-3 tracking-[0.1em]">${CONFIG.kpi.regra}</p>
-                    <p class="text-gray-300 text-sm leading-relaxed mb-5">${CONFIG.kpi.ruleDesc}</p>
+                    <p class="font-bold text-white uppercase text-xs mb-3 tracking-[0.1em] text-white">${CONFIG.kpi.regra}</p>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-5 text-white">${CONFIG.kpi.ruleDesc}</p>
                     <p class="text-[13px] text-pink-500 leading-relaxed italic font-medium opacity-95">${CONFIG.kpi.example}</p>
                 </div>
             `;
 
-            // 6. Pagamentos Dinâmicos
+            // Cronograma de Recebimento
             const paymentContainer = document.getElementById('payment-dual-path-container');
             if(CONFIG.isDualPath) {
                 const half = CONFIG.valorFixo / 2;
@@ -379,14 +374,14 @@
                     <div class="border border-white/5 p-8 rounded bg-white/5">
                         <h4 class="text-pink-500 font-black text-[10px] uppercase tracking-[0.2em] mb-6">${CONFIG.titleOptionA}</h4>
                         <ul class="space-y-5 text-sm text-gray-300">
-                            <li class="flex gap-4"><span class="text-pink-500 font-black text-lg">1</span> <span>${fmt.format(half)} antecipado na assinatura do contrato.</span></li>
-                            <li class="flex gap-4"><span class="text-pink-500 font-black text-lg">2</span> <span>${fmt.format(half)} + Bônus após entrega da meta e validação de KPI.</span></li>
+                            <li class="flex gap-5"><span class="text-pink-500 font-black text-xl">1</span> <span>${fmt.format(half)} antecipado na assinatura do contrato.</span></li>
+                            <li class="flex gap-5"><span class="text-pink-500 font-black text-xl">2</span> <span>${fmt.format(half)} + Bônus após entrega da meta e validação de KPI.</span></li>
                         </ul>
                     </div>
                     <div class="border border-white/5 p-8 rounded bg-purple-500/5">
                         <h4 class="text-purple-500 font-black text-[10px] uppercase tracking-[0.2em] mb-6">${CONFIG.titleOptionB}</h4>
                         <ul class="space-y-5 text-sm text-gray-300">
-                            <li class="flex gap-4"><span class="text-purple-500 font-black text-lg">!</span> <span>${fmt.format(CONFIG.valorFixoPotencializado)} (Fixo Potencializado) + Bônus pagos integralmente após a entrega da meta e validação de KPI.</span></li>
+                            <li class="flex gap-5"><span class="text-purple-500 font-black text-xl">!</span> <span>${fmt.format(CONFIG.valorFixoPotencializado)} (Integral) + Bônus pagos integralmente após a entrega da meta e validação de KPI.</span></li>
                         </ul>
                     </div>
                 `;
@@ -400,13 +395,13 @@
                 } else {
                     steps = [{ title: `Integral Pós Operação (${fmt.format(CONFIG.valorFixo)} + Bônus)`, desc: "Montante total pago após validação de KPI ao fim da operação." }];
                 }
-                paymentContainer.innerHTML = steps.map((s, i) => `<div class="flex gap-5"><div class="text-purple-500 font-black text-2xl">${i+1}</div><div><p class="font-bold text-white mb-1 text-lg">${s.title}</p><p class="text-sm text-gray-400">${s.desc}</p></div></div>`).join('');
+                paymentContainer.innerHTML = steps.map((s, i) => `<div class="flex gap-6"><div class="text-purple-500 font-black text-3xl">${i+1}</div><div><p class="font-bold text-white mb-1 text-xl text-white">${s.title}</p><p class="text-sm text-gray-400 text-white">${s.desc}</p></div></div>`).join('');
             }
 
-            // 7. Cláusulas
+            // Cláusulas de Observação
             if(CONFIG.clauses.length > 0) {
                 document.getElementById('additional-clauses-container').classList.remove('hidden');
-                document.getElementById('clauses-list').innerHTML = CONFIG.clauses.map(c => `<li class="flex gap-4"><span class="text-pink-500 text-xs mt-1.5 font-bold">/</span><span class="text-gray-400 leading-relaxed">${c}</span></li>`).join('');
+                document.getElementById('clauses-list').innerHTML = CONFIG.clauses.map(c => `<li class="flex gap-5 text-white"><span class="text-pink-500 text-xs mt-1.5 font-bold">/</span><span class="text-gray-400 leading-relaxed">${c}</span></li>`).join('');
             }
             
             // Ativar Ícones
