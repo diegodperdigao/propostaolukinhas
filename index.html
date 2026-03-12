@@ -271,7 +271,8 @@
         */
         const CONFIG = {
             influencer: "O LUKINHAS",
-            partnerLogo: "https://ibb.co/v4MnfFN3",
+            // IMPORTANTE: Cole abaixo o "Endereço da imagem" direto (terminado em .png ou .jpg)
+            partnerLogo: "https://i.ibb.co/zVtvCM3X/w-1200.jpg", 
             password: "3c2026",
 
             // NOVO: DADOS DO TALENT DECK
@@ -282,10 +283,12 @@
                 group: "https://t.me/+m0XGJQFP4t5hZDZh", // Telegram, Whatsapp, Discord
                 
                 // Informações Adicionais
-                // Link para o painel hospedado no Github (ex: ./docs/resultados-lukinhas.pdf) ou drive
-                evidencesLink: "./evidencias.pdf", 
+                // ATENÇÃO: O sistema agora detecta .mp4 e .pdf automaticamente!
+                evidencesLink: "./evidencias-lukinhas.mp4", 
                 // Texto com highlights e observações comerciais
-                observations: "Streamer focado em cassino ao vivo com alto volume de depósitos."
+                observations: "Streamer focado em cassino ao vivo com alto volume de depósitos.
+
+."
             },
 
             // PROPOSTA COMERCIAL
@@ -377,10 +380,14 @@
             // 2. Informações Adicionais
             const linkEvidencias = document.getElementById('evidences-link-container');
             if (CONFIG.talentDeck.evidencesLink) {
+                const isVideo = CONFIG.talentDeck.evidencesLink.toLowerCase().endsWith('.mp4');
+                const btnIcon = isVideo ? 'play-circle' : 'external-link';
+                const btnText = isVideo ? 'Assistir Vídeo' : 'Visualizar Documento';
+
                 linkEvidencias.innerHTML = `
                 <a href="${CONFIG.talentDeck.evidencesLink}" target="_blank" rel="noopener noreferrer" 
                    class="inline-flex items-center gap-2 bg-white/10 hover:bg-pink-600 text-white font-bold uppercase tracking-widest text-xs px-6 py-3 rounded transition-colors duration-300">
-                    <i data-lucide="external-link" class="w-4 h-4"></i> Visualizar Documento
+                    <i data-lucide="${btnIcon}" class="w-4 h-4"></i> ${btnText}
                 </a>`;
             } else {
                 linkEvidencias.innerHTML = `<span class="text-gray-600 text-xs uppercase tracking-widest">Documento não anexado</span>`;
