@@ -114,6 +114,7 @@
                     <span class="text-[0.65rem] tracking-[0.2em] uppercase text-gray-300 font-bold">Proposta Comercial</span>
                 </div>
                 <div class="hidden md:flex items-center gap-8 text-sm font-bold tracking-wider text-white">
+                    <a href="#talent-deck" class="hover:text-pink-500 transition-colors">TALENT DECK</a>
                     <a href="#comercial" class="hover:text-pink-500 transition-colors">METAS</a>
                     <a href="#regras" class="hover:text-pink-500 transition-colors">REGRAS</a>
                 </div>
@@ -139,13 +140,71 @@
                 <div class="max-w-5xl">
                     <h1 id="influencer-name" class="text-4xl sm:text-6xl md:text-7xl lg:text-[7.5rem] font-black leading-none tracking-tighter text-white drop-shadow-2xl uppercase">...</h1>
                     
-                    <a href="#comercial" class="mt-8 relative inline-block bg-white text-black font-extrabold uppercase tracking-[0.15em] px-10 py-5 text-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[8px_8px_0px_#111111]">
-                        Ver Detalhes do Acordo
+                    <a href="#talent-deck" class="mt-8 relative inline-block bg-white text-black font-extrabold uppercase tracking-[0.15em] px-10 py-5 text-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[8px_8px_0px_#111111]">
+                        Explorar Perfil
                         <div class="absolute top-1 right-1 w-1.5 h-1.5 bg-black"></div>
                     </a>
                 </div>
             </div>
         </header>
+
+        <!-- NOVO: Talent Deck -->
+        <section id="talent-deck" class="pt-20 pb-24 relative z-10 border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl font-bold tracking-wider mb-2 uppercase text-white">Talent Deck</h2>
+                <div class="w-12 h-1 bg-pink-500 mb-12"></div>
+                
+                <!-- Redes Sociais -->
+                <div class="mb-16">
+                    <h4 class="text-xs font-black uppercase tracking-[0.3em] text-gray-500 mb-6 flex items-center gap-2">
+                        <i data-lucide="share-2" class="w-4 h-4"></i> Redes Sociais
+                    </h4>
+                    <div id="social-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Gerado via JS -->
+                    </div>
+                </div>
+
+                <!-- Informações Adicionais -->
+                <div>
+                    <h4 class="text-xs font-black uppercase tracking-[0.3em] text-gray-500 mb-6 flex items-center gap-2">
+                        <i data-lucide="plus-circle" class="w-4 h-4"></i> Informações Adicionais
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                        
+                        <!-- Card Evidências -->
+                        <div class="glass-panel border border-white/10 p-8 rounded-sm relative group hover:border-pink-500/50 transition-all duration-300 flex flex-col justify-center min-h-[200px]">
+                            <div class="absolute top-0 right-0 bg-white/5 px-3 py-1 text-[9px] uppercase tracking-widest text-gray-400">Resultados</div>
+                            <div class="flex items-start gap-4 mb-4">
+                                <div class="bg-pink-500/20 p-3 rounded-full">
+                                    <i data-lucide="bar-chart-2" class="w-6 h-6 text-pink-500"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-white uppercase tracking-wider mb-1">Evidências de Resultado</h3>
+                                    <p class="text-sm text-gray-400">Painéis de analytics e relatórios recentes do influenciador.</p>
+                                </div>
+                            </div>
+                            <div class="mt-auto pt-4" id="evidences-link-container">
+                                <!-- Botão injetado via JS -->
+                            </div>
+                        </div>
+
+                        <!-- Card Observações -->
+                        <div class="bg-[#0a0a0a]/80 border-l-4 border-purple-500 p-8 rounded-sm relative flex flex-col justify-center min-h-[200px]">
+                            <div class="absolute top-0 right-0 bg-white/5 px-3 py-1 text-[9px] uppercase tracking-widest text-gray-400">Highlights</div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <i data-lucide="message-square" class="w-5 h-5 text-purple-500"></i>
+                                <h3 class="text-lg font-bold text-white uppercase tracking-wider">Observações</h3>
+                            </div>
+                            <p id="observacoes-text" class="text-gray-300 text-sm leading-relaxed italic border-l border-white/10 pl-4 py-1">
+                                <!-- Injetado via JS -->
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
 
         <!-- Metas e Comissionamento -->
         <section id="comercial" class="pt-20 pb-24 relative z-10 border-t border-white/10">
@@ -212,9 +271,24 @@
         */
         const CONFIG = {
             influencer: "O LUKINHAS",
-            partnerLogo: "https://i.ibb.co/DgVdfDmz/image-7-1.png",
+            partnerLogo: "https://ibb.co/v4MnfFN3",
             password: "3c2026",
 
+            // NOVO: DADOS DO TALENT DECK
+            talentDeck: {
+                // Redes Sociais (Deixe vazio "" se não houver a rede)
+                instagram: "https://www.instagram.com/lucaskarpinski_/",
+                liveChannel: "https://www.youtube.com/@OLukinhass", // Pode ser twitch, youtube, etc.
+                group: "https://t.me/+m0XGJQFP4t5hZDZh", // Telegram, Whatsapp, Discord
+                
+                // Informações Adicionais
+                // Link para o painel hospedado no Github (ex: ./docs/resultados-lukinhas.pdf) ou drive
+                evidencesLink: "./evidencias.pdf", 
+                // Texto com highlights e observações comerciais
+                observations: "Streamer focado em cassino ao vivo com alto volume de depósitos."
+            },
+
+            // PROPOSTA COMERCIAL
             metaBase: 200000,      
             valorFixo: 20000,      
             valorFixoPotencializado: 25000, 
@@ -225,11 +299,11 @@
             titleOptionA: "OPÇÃO A (50% ANTECIPADO)",
             titleOptionB: "OPÇÃO B (PÓS PERFOMANCE)",
 
-            isDualPath: true, 
+            isDualPath: false, 
             paymentMode: 2, 
             
             marketing: {
-                show: true,           
+                show: true,            
                 label: "AÇÕES DE MARKETING",
                 valor: 1000,
                 desc: "Verba destinada a ativações e sorteios com viewers durante as transmissões."
@@ -255,6 +329,69 @@
             document.getElementById('influencer-name').innerText = CONFIG.influencer;
             document.getElementById('mosaic-target').style.backgroundImage = `url('${CONFIG.partnerLogo}')`;
 
+            /* ==========================================================================
+               RENDERIZAÇÃO DO TALENT DECK
+               ========================================================================== */
+            
+            // 1. Redes Sociais
+            const socialGrid = document.getElementById('social-grid');
+            let socialHTML = "";
+            
+            if(CONFIG.talentDeck.instagram) {
+                socialHTML += `
+                <a href="${CONFIG.talentDeck.instagram}" target="_blank" rel="noopener noreferrer" class="glass-panel p-6 border border-white/5 rounded-sm flex items-center gap-4 hover:border-pink-500 hover:bg-white/5 transition-all group">
+                    <div class="bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-500 p-2.5 rounded-full group-hover:scale-110 transition-transform">
+                        <i data-lucide="instagram" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <div>
+                        <p class="text-white font-bold uppercase tracking-widest text-sm">Instagram</p>
+                    </div>
+                </a>`;
+            }
+            
+            if(CONFIG.talentDeck.liveChannel) {
+                socialHTML += `
+                <a href="${CONFIG.talentDeck.liveChannel}" target="_blank" rel="noopener noreferrer" class="glass-panel p-6 border border-white/5 rounded-sm flex items-center gap-4 hover:border-purple-500 hover:bg-white/5 transition-all group">
+                    <div class="bg-purple-600 p-2.5 rounded-full group-hover:scale-110 transition-transform">
+                        <i data-lucide="monitor-play" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <div>
+                        <p class="text-white font-bold uppercase tracking-widest text-sm">Canal de Lives</p>
+                    </div>
+                </a>`;
+            }
+            
+            if(CONFIG.talentDeck.group) {
+                socialHTML += `
+                <a href="${CONFIG.talentDeck.group}" target="_blank" rel="noopener noreferrer" class="glass-panel p-6 border border-white/5 rounded-sm flex items-center gap-4 hover:border-emerald-500 hover:bg-white/5 transition-all group">
+                    <div class="bg-emerald-500 p-2.5 rounded-full group-hover:scale-110 transition-transform">
+                        <i data-lucide="users" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <div>
+                        <p class="text-white font-bold uppercase tracking-widest text-sm">Comunidade</p>
+                    </div>
+                </a>`;
+            }
+            socialGrid.innerHTML = socialHTML;
+
+            // 2. Informações Adicionais
+            const linkEvidencias = document.getElementById('evidences-link-container');
+            if (CONFIG.talentDeck.evidencesLink) {
+                linkEvidencias.innerHTML = `
+                <a href="${CONFIG.talentDeck.evidencesLink}" target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex items-center gap-2 bg-white/10 hover:bg-pink-600 text-white font-bold uppercase tracking-widest text-xs px-6 py-3 rounded transition-colors duration-300">
+                    <i data-lucide="external-link" class="w-4 h-4"></i> Visualizar Documento
+                </a>`;
+            } else {
+                linkEvidencias.innerHTML = `<span class="text-gray-600 text-xs uppercase tracking-widest">Documento não anexado</span>`;
+            }
+
+            document.getElementById('observacoes-text').innerText = CONFIG.talentDeck.observations || "Nenhuma observação adicional incluída para este perfil.";
+
+
+            /* ==========================================================================
+               RENDERIZAÇÃO DA PROPOSTA (MANTIDA)
+               ========================================================================== */
             const cardsContainer = document.getElementById('meta-cards-grid');
             
             let fixoCardHTML = "";
@@ -350,7 +487,7 @@
                     </div>`;
             }).join('');
 
-            // KPI Rigorosamente como na Foto (Exemplo em Rosa)
+            // KPI
             document.getElementById('kpi-section').innerHTML = `
                 <div class="flex items-center gap-6 mb-8 text-white">
                     <div class="bg-[#1f121a] p-4 rounded-full flex items-center justify-center w-14 h-14 border border-pink-500/20 shadow-[0_0_15px_rgba(255,0,127,0.1)]">
