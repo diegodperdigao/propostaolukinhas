@@ -92,7 +92,11 @@
                 <div class="space-y-4">
                     <input type="password" id="password-input" placeholder="••••••••" 
                         class="w-full bg-black/40 border border-white/10 px-4 py-4 rounded text-center text-white focus:outline-none focus:border-pink-500 transition-all tracking-widest font-mono">
-                    <button onclick="checkPassword()" class="w-full bg-white text-black font-black uppercase tracking-widest py-4 rounded hover:bg-pink-500 hover:text-white transition-all duration-300 active:scale-95">
+                    
+                    <!-- NOVO: Mensagem de erro visual clara -->
+                    <p id="login-error-msg" class="text-red-500 text-xs font-bold tracking-widest h-2 opacity-0 transition-opacity duration-300">SENHA INCORRETA</p>
+                    
+                    <button type="button" onclick="checkPassword()" class="w-full bg-white text-black font-black uppercase tracking-widest py-4 rounded hover:bg-pink-500 hover:text-white transition-all duration-300 active:scale-95">
                         Desbloquear
                     </button>
                 </div>
@@ -278,15 +282,15 @@
             // NOVO: DADOS DO TALENT DECK
             talentDeck: {
                 // Redes Sociais (Deixe vazio "" se não houver a rede)
-                instagram: "https://www.instagram.com/lucaskarpinski_/",
-                liveChannel: "https://www.youtube.com/@OLukinhass", // Pode ser twitch, youtube, etc.
-                group: "https://t.me/+m0XGJQFP4t5hZDZh", // Telegram, Whatsapp, Discord
+                instagram: "https://instagram.com/seu_influenciador",
+                liveChannel: "https://twitch.tv/seu_influenciador", // Pode ser twitch, youtube, etc.
+                group: "https://t.me/seu_grupo_vip", // Telegram, Whatsapp, Discord
                 
                 // Informações Adicionais
                 // ATENÇÃO: O sistema agora detecta .mp4 e .pdf automaticamente!
                 evidencesLink: "./evidencias-lukinhas.mp4", 
                 // Texto com highlights e observações comerciais
-                observations: "Streamer focado em cassino ao vivo com alto volume de depósitos."
+                observations: "Influenciador com altíssima taxa de engajamento no horário noturno. Seu público alvo principal (18-24 anos) possui alta afinidade com o segmento de iGaming, convertendo 30% acima da média da agência."
             },
 
             // PROPOSTA COMERCIAL
@@ -300,7 +304,7 @@
             titleOptionA: "OPÇÃO A (50% ANTECIPADO)",
             titleOptionB: "OPÇÃO B (PÓS PERFOMANCE)",
 
-            isDualPath: false, 
+            isDualPath: true, 
             paymentMode: 2, 
             
             marketing: {
@@ -552,10 +556,19 @@
 
         // Sistema de Senha
         const passInput = document.getElementById('password-input');
-        passInput.addEventListener('keypress', (e) => e.key === 'Enter' && checkPassword());
+        const errorMsg = document.getElementById('login-error-msg');
+
+        passInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault(); // Evita que o enter atualize a página sem querer
+                checkPassword();
+            }
+        });
         
         function checkPassword() {
-            if(passInput.value === CONFIG.password) {
+            // O .trim() garante que espaços acidentais (ao colar a senha) sejam ignorados!
+            if(passInput.value.trim() === CONFIG.password) {
+                errorMsg.style.opacity = '0';
                 document.getElementById('lock-screen').style.opacity = '0';
                 setTimeout(() => {
                     document.getElementById('lock-screen').style.display = 'none';
@@ -565,7 +578,12 @@
             } else {
                 passInput.classList.add('shake');
                 passInput.value = '';
-                setTimeout(() => passInput.classList.remove('shake'), 500);
+                errorMsg.style.opacity = '1'; // Mostra o texto de erro
+                
+                setTimeout(() => {
+                    passInput.classList.remove('shake');
+                    errorMsg.style.opacity = '0'; // Esconde o erro depois de 2 segundos
+                }, 2000);
             }
         }
     </script>
